@@ -1,1 +1,52 @@
-<p>register works!</p>
+<div class="container mx-auto ">
+
+    <div class="shadow bg-white p-10 mb-5 md:w-[38em]  mx-auto sm:w-full">
+        <div class="flex justify-center">
+            <img src="/assets/img/logo.png" />
+        </div>
+        <h1 class="text-2xl font-bold my-4">Register</h1>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <!-- <div class="mb-4 relative">
+              <label class="block text-gray-700 font-bold mb-2" for="userName"> Username </label>
+              <input formControlName="userName" name="userName" class=" appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username" />
+              <mat-error class="error-message " *ngIf=" registerForm.get('userName').touched && registerForm.get('userName').errors">
+                  <span *ngIf="registerForm.get('userName').hasError('required')">User Name is mandatory </span>
+              </mat-error>
+          </div> -->
+            <div class="mb-4 relative">
+                <label class="block text-gray-700 font-bold mb-2" for="email">          Email        </label>
+                <input formControlName="email" name="email" class=" appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Email">
+                <mat-error class="error-message " *ngIf=" registerForm.get('email').touched &&  registerForm.get('email').errors">
+                    <span *ngIf="registerForm.get('email').hasError('required')">            Email is mandatory          </span>
+                    <span *ngIf="registerForm.get('email').hasError('email')">            Email is not valid          </span>
+                </mat-error>
+            </div>
+            <div class="mb-4 relative">
+                <label class="block text-gray-700 font-bold mb-2" for="password">          Password        </label>
+                <input formControlName="password" name="password" class=" appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="**********">
+                <mat-error class="error-message " *ngIf=" registerForm.get('password').touched &&  registerForm.get('password').errors">
+                    <span *ngIf="registerForm.get('password').hasError('required')">            Password is mandatory          </span>
+                    <span *ngIf="registerForm.get('password').hasError('minlength')">            Password min length is 6          </span>
+                </mat-error>
+            </div>
+            <div class="mb-4 relative">
+                <label class="block text-gray-700 font-bold mb-2" for="confirm-password">          Confirm Password        </label>
+                <input formControlName="confirmPassword" name="confirmPassword" class=" appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="confirm-password" type="password" placeholder="**********">
+                <mat-error class="error-message " *ngIf=" registerForm.get('confirmPassword').touched && registerForm.get('confirmPassword').errors">
+                    <span *ngIf="registerForm.get('confirmPassword').hasError('required')">            Confirm Password is mandatory          </span>
+                    <span *ngIf="registerForm.get('confirmPassword').hasError('minlength')">            Confirm Password min length is 6          </span>
+                </mat-error>
+                <mat-error class="error-message " *ngIf=" registerForm.get('confirmPassword').touched &&  registerForm.hasError('confirmPassNotValid')">
+                    Password And Confirm Password not match
+                </mat-error>
+            </div>
+            <div class="flex items-center justify-between">
+                <button type="submit" class="send_btn text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">          Register        </button>
+            </div>
+
+            <div class="mt-2 text-center">
+                <a routerLink="/login" class="no-underline text-[#EF6D39] font-bold"> Have Account? Sign in</a>
+            </div>
+        </form>
+    </div>
+</div>

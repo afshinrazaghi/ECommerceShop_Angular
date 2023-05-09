@@ -1,0 +1,39 @@
+<div class="container mx-auto mb-10 pt-36">
+
+    <div class="shadow bg-white p-10  md:w-[38em] mx-auto sm:w-full">
+        <div class="flex justify-center">
+            <img src="/assets/img/logo.png" />
+        </div>
+        <h1 class="text-2xl font-bold my-4">Login</h1>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="mb-4 relative">
+                <label class="block text-gray-700 font-bold mb-2" for="email"> Email </label>
+                <input formControlName="email" name="email" class=" appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="text" placeholder="Email" />
+                <mat-error class="error-message " *ngIf=" loginForm.get('email').touched && loginForm.get('email').errors">
+                    <span *ngIf="loginForm.get('email').hasError('required')"> Email is mandatory </span>
+                </mat-error>
+            </div>
+
+            <div class="mb-4 relative">
+                <label class="block text-gray-700 font-bold mb-2" for="password"> Password </label>
+                <input formControlName="password" name="password" class=" appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="**********">
+                <mat-error class="error-message " *ngIf=" loginForm.get('password').touched &&  loginForm.get('password').errors">
+                    <span *ngIf="loginForm.get('password').hasError('required')"> Password is mandatory </span>
+                    <span *ngIf="loginForm.get('password').hasError('minlength')"> Password min length is 6 </span>
+                </mat-error>
+            </div>
+
+            <div class="flex items-center justify-between">
+                <button type="submit" class="send_btn text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+        Login </button>
+            </div>
+            <div class="mt-2 ">
+                <a routerLink="/register" class="no-underline text-[#EF6D39] font-bold">No Account? Sign up</a>
+            </div>
+
+            <div class="mt-2">
+                <a routerLink="/forgetPassword" class="no-underline text-[#EF6D39]">Forget Password?</a>
+            </div>
+        </form>
+    </div>
+</div>

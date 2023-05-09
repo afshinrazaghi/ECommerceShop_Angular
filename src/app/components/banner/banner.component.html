@@ -1,0 +1,37 @@
+<section class="banner_main">
+
+
+    <div id="banner1" class="carousel slide" data-ride="carousel" data-interval="2000">
+        <ol class="carousel-indicators">
+            <li data-target="#banner1" data-slide-to="0" class="active"></li>
+            <li data-target="#banner1" data-slide-to="1"></li>
+            <li data-target="#banner1" data-slide-to="2"></li>
+            <li data-target="#banner1" data-slide-to="3"></li>
+            <li data-target="#banner1" data-slide-to="4"></li>
+            <li data-target="#banner1" data-slide-to="5"></li>
+            <li data-target="#banner1" data-slide-to="6"></li>
+            <li data-target="#banner1" data-slide-to="7"></li>
+            <li data-target="#banner1" data-slide-to="8"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div *ngFor="let image of images" class="carousel-item " [class.active]="images.indexOf(image) == 0">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <div class="text-bg">
+                            <figure><img class="mx-auto " [src]="image.name" alt="{{image.title}}" /></figure>
+                            <!-- <a class="read_more" href="#">Shop Now</a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <a class="carousel-control-prev" href="#banner1" role="button" data-slide="prev">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        </a>
+        <a class="carousel-control-next" href="#banner1" role="button" data-slide="next">
+            <i class="fa fa-arrow-right" aria-hidden="true"></i>
+        </a>
+    </div>
+</section>

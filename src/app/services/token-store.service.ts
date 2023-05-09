@@ -3,6 +3,7 @@ import jwt_decode from 'jwt-decode';
 import { AuthTokenType } from '../models/enums';
 import { UserDto } from '../models/user.dto';
 import { BrowserStorageService } from './browser-storage.service';
+import { LoginUserResponse } from '../models/login-user-response';
 
 @Injectable({ providedIn: 'root' })
 export class TokenStoreService {
@@ -85,7 +86,7 @@ export class TokenStoreService {
     return !value || value.length === 0;
   }
 
-  setLoginSession(response:UserDto):void{
+  setLoginSession(response:LoginUserResponse):void{
     this.setToken(AuthTokenType.AccessToken, response.accessToken);
     this.setToken(AuthTokenType.RefreshToken,response.refreshToken);
   }

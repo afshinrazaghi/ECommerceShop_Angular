@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ngxLoadingAnimationTypes } from 'ngx-loading';
+import { LoadingService } from './services/loading.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'ECommerceShop_Angular';
+  _ngxLoadingAnimationTypes = ngxLoadingAnimationTypes;
+  title = 'colorFull';
+  loading: boolean = false;
+
+  constructor(private loadingService:LoadingService) {
+    this.loadingService.loadingBehaviour.subscribe((isLoading) => {
+      this.loading = isLoading;
+    });
+  }
+
 }
