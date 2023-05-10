@@ -13,6 +13,10 @@ import { UserDto } from 'src/app/models/user.dto';
 import { LoginUserRequest } from 'src/app/models/login-user-request';
 import { LoginUserResponse } from 'src/app/models/login-user-response';
 import { LogoutRequest } from 'src/app/models/logout-request';
+import { GetUserRequest } from 'src/app/models/get-user-request';
+import { BaseQueryResponse } from 'src/app/models/base-query-response.dto';
+import { UserResponse } from 'src/app/models/user-response';
+import { UpdateUserRequest } from 'src/app/models/update-user-request';
 
 @Injectable({ providedIn: 'root' })
 export class UserApi extends BaseApi {
@@ -59,6 +63,37 @@ export class UserApi extends BaseApi {
 
   logout(logoutDto: LogoutRequest): Observable<BaseCommandResponse> {
     return this.post(logoutDto, 'logout');
+  }
+
+  getUsers(request: GetUserRequest): Observable<BaseQueryResponse<UserResponse>> {
+    return this.getByParam('getUsers', request);
+  }
+
+  getUserById(userId: string): Observable<BaseQueryResponse<UserResponse>> {
+    return this.getByParam('getUserById', { userId: userId });
+  }
+
+  updateUser(request: UpdateUserRequest): Observable<BaseCommandResponse2<UserResponse>> {
+    return this.post(request, 'updateUser');
+  }
+
+  getAuthUser() {
+    if (!this.isAuthUserLoggedIn()) {
+      return null;
+    }
+
+    const decodedToken = this.tokenStoreService.getDecodedAccessToken();
+
+    return <UserDto>Object.freeze({
+      id: decodedToken.sub,
+      userName: decodedToken.unique_name,
+      fullName: decodedToken.given_name,
+      email: decodedToken.email,
+      isAdmin: (decodedToken.isAdmin == true || decodedToken.isAdmin == 'True') ? true : false,
+      accessToken: '',
+      refreshToken: '',
+      // user: user
+    });
   }
 
 

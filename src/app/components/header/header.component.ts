@@ -15,6 +15,7 @@ import {
 import { TokenStoreService } from 'src/app/services/token-store.service';
 import { BrowserStorageService } from 'src/app/services/browser-storage.service';
 import { UserApi } from 'src/app/api/v1/user.api';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-header',
@@ -66,9 +67,10 @@ export class HeaderComponent implements OnInit {
     private router: Router,
     private loadingService: LoadingService,
     private tokenStoreService: TokenStoreService,
-    private browserStorageService:BrowserStorageService,
-    private userApi:UserApi
-  ) {}
+    private browserStorageService: BrowserStorageService,
+    private userApi: UserApi,
+    private messageServie: MessageService
+  ) { }
 
   ngOnInit(): void {
     this.router.events
@@ -96,24 +98,24 @@ export class HeaderComponent implements OnInit {
       }
     }
 
-    // this.userApi.loggedIn.subscribe((res) => {
-    //   if (res) {
-    //     this.getAuthUser();
-    //   } else {
-    //     this.currentUser = null;
-    //   }
-    // });
+    this.userApi.loggedIn.subscribe((res) => {
+      if (res) {
+        this.getAuthUser();
+      } else {
+        this.currentUser = null;
+      }
+    });
 
-    // this.getAuthUser();
+    this.getAuthUser();
     // if (this.userApi.isAuthUserLoggedIn()) {
     //   this.getShoppingCartItemsCount();
     // }
 
-    // this.userApi.closeUserDropDownMenu.subscribe((res) => {
-    //   if (res == true) {
-    //     this.isOpen = false;
-    //   }
-    // });
+    this.userApi.closeUserDropDownMenu.subscribe((res) => {
+      if (res == true) {
+        this.isOpen = false;
+      }
+    });
 
     // this.shoppingSessionApi.shoppingCartChanged.subscribe((res) => {
     //   if (res == true) {
@@ -135,46 +137,33 @@ export class HeaderComponent implements OnInit {
     //return document.getElementsByClassName("navbar-collapse")[0].className.includes("show") ? 'open':'closed';
   }
 
-  // getAuthUser() {
-  //   if (this.userApi.isAuthUserLoggedIn()) {
-  //     this.currentUser = this.userApi.getAuthUser();
-  //     this.isOpen = false;
-  //   }
-  // }
+  getAuthUser() {
+    if (this.userApi.isAuthUserLoggedIn()) {
+      this.currentUser = this.userApi.getAuthUser();
+      this.isOpen = false;
+    }
+  }
 
-  // getShoppingCartItemsCount() {
-  //   this.loadingService.loading = true;
-  //   return this.shoppingSessionApi
-  //     .getShoppingCartItemsCount()
-  //     .subscribe((res) => {
-  //       this.loadingService.loading = false;
-  //       if (res.success) {
-  //         this.shoppingCartItemsCount = res.item;
-  //       }
-  //     });
-  // }
 
-  // get userAuthenticated() {
-  //   return this.userApi.isAuthUserLoggedIn();
-  // }
 
-  // logout() {
-  //   this.loadingService.loading = true;
-  //   this.userApi.logout({}).subscribe((res) => {
-  //     this.loadingService.loading = false;
-  //     if (res.success) {
-  //       this.notifierService.notify('success', res.message);
-  //       this.userApi.logged = false;
-  //       this.tokenStoreService.deleteAuthTokens();
-  //       this.browserStorageService.removeLocal("user");
-  //       this.router.navigate(['/login'], {
-  //         queryParams: { returnUrl: '/home' },
-  //       });
-  //     } else {
-  //       this.notifierService.notify('error', res.message);
-  //     }
-  //   });
-  // }
+
+  logout() {
+    this.loadingService.loading = true;
+    this.userApi.logout({}).subscribe((res) => {
+      this.loadingService.loading = false;
+      if (res.success) {
+        this.messageServie.add({ severity: 'success', summary: "Success", detail: res.message });
+        this.userApi.logged = false;
+        this.tokenStoreService.deleteAuthTokens();
+        this.browserStorageService.removeLocal("user");
+        this.router.navigate(['/login'], {
+          queryParams: { returnUrl: '/home' },
+        });
+      } else {
+        this.messageServie.add({ severity: 'error', summary: "Error", detail: res.message });
+      }
+    });
+  }
 
 
 }

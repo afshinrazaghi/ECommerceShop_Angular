@@ -1,1 +1,22 @@
-<p>users works!</p>
+<p-table [value]="users" [lazy]="true" responsiveLayout="stack" [breakpoint]="'960px'" [tableStyle]="{'min-width': '20rem'}" editMode="row" (onLazyLoad)="loadUsers($event)" dataKey="id" [paginator]="true" [rows]="take" [totalRecords]="totalRecords" [loading]="loading"
+    [globalFilterFields]="">
+    <ng-template pTemplate="header">
+        <tr>
+            <th> First Name </th>
+            <th> Last Name </th>
+            <th> Email </th>
+            <th> Is Admin </th>
+            <th> Create Date </th>
+            <!-- <th></th> -->
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-user let-editing="editing" let-ri="rowIndex">
+        <tr [pEditableRow]="user">
+            <td><span class="p-column-title">First Name</span>{{ user.firstName }}</td>
+            <td><span class="p-column-title">Last Name</span>{{ user.lastName}}</td>
+            <td><span class="p-column-title">Email</span>{{ user.email}}</td>
+            <td><span class="p-column-title">IsAdmin</span>{{ user.isAdmin }}</td>
+            <td><span class="p-column-title">Create Date</span> {{ user.createAt | date }}</td>
+        </tr>
+    </ng-template>
+</p-table>

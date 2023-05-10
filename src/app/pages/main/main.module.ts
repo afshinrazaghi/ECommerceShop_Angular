@@ -14,6 +14,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { UserDropdownComponent } from 'src/app/components/user-dropdown/user-dropdown.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {
@@ -31,10 +32,12 @@ const routes: Routes = [
   declarations: [
     RegisterComponent,
     HeaderComponent,
+    HomeComponent,
     BannerComponent,
     MainComponent,
     LoginComponent,
-    UserDropdownComponent
+    UserDropdownComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,

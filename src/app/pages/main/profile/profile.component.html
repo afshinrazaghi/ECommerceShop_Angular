@@ -1,0 +1,56 @@
+<div class="container mx-auto pt-36 ">
+
+    <div class="shadow bg-white p-10 mb-5 md:w-md mx-auto sm:w-full">
+        <div class="flex justify-center">
+            <img src="/assets/img/logo.png" />
+        </div>
+        <h1 class="text-2xl font-bold my-4">Profile</h1>
+        <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+            <fieldset class="border-[1px] border-solid border-gray-200 rounded-[6px] p-3">
+                <legend class="bg-whtie w-[140px] pl-2">User Info</legend>
+                <div class="row">
+                    <div class="col-12 col-sm-6 mb-4 relative">
+                        <label class="block text-gray-700 font-bold mb-2" for="email"> Email </label>
+                        <input formControlName="email" autocomplete="off" name="email" class=" appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Email">
+                        <mat-error class="error-message " *ngIf=" profileForm.get('email').touched &&  profileForm.get('email').errors">
+                            <span *ngIf="profileForm.get('email').hasError('required')"> Email is mandatory </span>
+                            <span *ngIf="profileForm.get('email').hasError('email')"> Email is not valid </span>
+                        </mat-error>
+                    </div>
+
+                    <div class="col-12 col-sm-6 mb-4 relative">
+                        <label class="block text-gray-700 font-bold mb-2" for="password"> Password </label>
+                        <input formControlName="password" autocomplete="off" name="password" class=" appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="********" />
+                        <mat-error class="error-message " *ngIf=" profileForm.get('password').touched && profileForm.get('password').errors">
+                            <span *ngIf="profileForm.get('password').hasError('minlength')">Password min Lenght is 6 </span>
+                        </mat-error>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 col-sm-6 mb-4 relative">
+                        <label class="block text-gray-700 font-bold mb-2 mandatory" for="firstName"> FirstName </label>
+                        <input formControlName="firstName" autocomplete="off" name="firstName" class=" appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="firstName" type="text" placeholder="First Name" />
+                        <mat-error class="error-message " *ngIf=" profileForm.get('firstName').touched && profileForm.get('firstName').errors">
+                            <span *ngIf="profileForm.get('firstName').hasError('required')">First Name is mandatory </span>
+                        </mat-error>
+                    </div>
+                    <div class="col-12 col-sm-6 mb-4 relative">
+                        <label class="block text-gray-700 font-bold mb-2 mandatory" for="lastName"> LastName </label>
+                        <input formControlName="lastName" autocomplete="off" name="lastName" class=" appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="lastName" type="text" placeholder="Last Name" />
+                        <mat-error class="error-message " *ngIf=" profileForm.get('lastName').touched && profileForm.get('lastName').errors">
+                            <span *ngIf="profileForm.get('lastName').hasError('required')">Last Name is mandatory </span>
+                        </mat-error>
+                    </div>
+                </div>
+
+
+            </fieldset>
+
+            <div class="text-center">
+                <button type="submit" class="send_btn max-w-[400px] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+        Update </button>
+            </div>
+        </form>
+    </div>
+</div>

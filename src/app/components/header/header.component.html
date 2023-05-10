@@ -22,19 +22,7 @@
                                 <li class="nav-item " [class.selected-menu-item]="selectedMenu=='home'">
                                     <a class="nav-link whitespace-nowrap" routerLink="/home">Home</a>
                                 </li>
-                                <li class="nav-item " [class.selected-menu-item]="selectedMenu=='orderYourTrueSelf'">
-                                    <a class="nav-link whitespace-nowrap" routerLink="/orderYourTrueSelf">Order your TrueSelf</a>
-                                </li>
-                                <!-- <li class="nav-item " [class.selected-menu-item]="selectedMenu=='whatIsTrueSelf'">
-                                    <a class="nav-link whitespace-nowrap" routerLink="/whatIsTrueSelf">What is TrueSelf</a>
-                                </li> -->
-                                <li class="nav-item " [class.selected-menu-item]="selectedMenu=='buyAsGift'">
-                                    <a class="nav-link whitespace-nowrap" routerLink="/buyAsGift">Buy as Gift</a>
-                                </li>
-                                <li class="nav-item " [class.selected-menu-item]="selectedMenu=='personalityTests'">
-                                    <a class="nav-link whitespace-nowrap" routerLink="/personalityTests">Personality Tests
-                                    </a>
-                                </li>
+
                                 <li class="nav-item m:inline md:hidden lg:inline" [class.selected-menu-item]="selectedMenu=='about'">
                                     <a class="nav-link whitespace-nowrap" routerLink="/about">About us</a>
                                 </li>
@@ -52,12 +40,8 @@
                                     <a class="nav-link whitespace-nowrap" routerLink="/login">Sign in</a>
                                 </li>
 
-                                <!-- <li class="nav-item sm:inline md:hidden lg:inline" [class.selected-menu-item]="selectedMenu=='contact'">
-                                    <a class="nav-link whitespace-nowrap" routerLink="/contact">Contact</a>
-                                </li>
 
-
-
+                                <!--
                                 <li *ngIf="userAuthenticated && shoppingCartItemsCount>0" class="relative nav-item mr-3 hover:cursor-pointer ">
                                     <a class="nav-link" routerLink="/checkout/cart">
                                         <i class="relative text-xl fa fa-shopping-bag " [class.text-gray-500]="selectedMenu!='checkout/cart'" [class.text-[#EF6D39]]="selectedMenu=='checkout/cart'">
@@ -66,25 +50,20 @@
                                     </a>
                                 </li>
 
-
+                              -->
 
 
                                 <li *ngIf="userAuthenticated" class="nav-item  md:hidden" [class.selected-menu-item]="selectedMenu=='profile'">
                                     <a class="nav-link" routerLink="/profile">Profile</a>
-                                </li> -->
+                                </li>
 
-                                <!-- <li *ngIf="userAuthenticated" class="nav-item md:hidden">
-                                    <a class="nav-link" routerLink="/userPromoCodes">User Promo Codes</a>
-                                </li>
-                                <li *ngIf="userAuthenticated" class="nav-item md:hidden">
-                                    <a class="nav-link" routerLink="/userOrders">User Orders</a>
-                                </li>
+
                                 <li *ngIf="userAuthenticated && currentUser.isAdmin" class="nav-item md:hidden">
                                     <a class="nav-link" routerLink="/adminPanel">Admin Panel</a>
                                 </li>
                                 <li *ngIf="userAuthenticated" class="nav-item md:hidden">
                                     <a class="nav-link" (click)="logout()" href="javascript:void(0);">Logout</a>
-                                </li> -->
+                                </li>
                             </ul>
                         </div>
                     </nav>

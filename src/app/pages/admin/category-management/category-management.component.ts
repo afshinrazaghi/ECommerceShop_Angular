@@ -84,6 +84,7 @@ export class CategoryManagementComponent implements OnInit {
     }
     else {
       Swal.fire('Warning', messages.join("<br />"), 'warning');
+      this.onRowEditCancel(category, index);
     }
 
   }

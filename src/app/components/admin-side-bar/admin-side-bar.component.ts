@@ -14,15 +14,9 @@ export class AdminSideBarComponent implements OnInit{
 
   pages = [
     'products',
-    'orderYourTrueSelf',
     'home',
-    'buyAsGift',
-    'personalityTests',
-    'aboutUs',
-    'termsAndConditions',
-    'orders',
     'users',
-    'quizzes'
+    'categories'
   ];
   selectedMenu: string = '';
   constructor(private router:Router, private _elementRef: ElementRef){
