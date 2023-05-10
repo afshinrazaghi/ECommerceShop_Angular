@@ -8,10 +8,11 @@ import { MessageService } from 'primeng/api';
 import { LoadingService } from 'src/app/services/loading.service';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { RegisterUserRequest } from 'src/app/models/register-user-request';
-import { BaseCommandResponse2 } from 'src/app/models/base-command.dto';
+import { BaseCommandResponse, BaseCommandResponse2 } from 'src/app/models/base-command.dto';
 import { UserDto } from 'src/app/models/user.dto';
 import { LoginUserRequest } from 'src/app/models/login-user-request';
 import { LoginUserResponse } from 'src/app/models/login-user-response';
+import { LogoutRequest } from 'src/app/models/logout-request';
 
 @Injectable({ providedIn: 'root' })
 export class UserApi extends BaseApi {
@@ -21,12 +22,14 @@ export class UserApi extends BaseApi {
     private configUser: AppConfigService,
     private tokenStoreService: TokenStoreService,
     messageService: MessageService,
-    loadinSevice: LoadingService
+    loadingSevice: LoadingService
   ) {
-    super(http, configUser, router, 'User', messageService, loadinSevice);
+    super(http, configUser, router, 'User', messageService, loadingSevice);
   }
 
   public loggedIn: BehaviorSubject<boolean> = new BehaviorSubject(null);
+  public closeUserDropDownMenu: BehaviorSubject<boolean> = new BehaviorSubject(null);
+
   _logged: boolean = false;
 
   public set logged(value: boolean) {
@@ -39,12 +42,23 @@ export class UserApi extends BaseApi {
     return this._logged;
   }
 
+  public notifyCloseUserDropDownMenu() {
+    this.closeUserDropDownMenu.next(null);
+    this.closeUserDropDownMenu.next(true);
+  }
+
+
+
   register(user: RegisterUserRequest): Observable<BaseCommandResponse2<UserDto>> {
     return this.post(user, 'register');
   }
 
   login(user: LoginUserRequest): Observable<BaseCommandResponse2<LoginUserResponse>> {
     return this.post(user, 'login');
+  }
+
+  logout(logoutDto: LogoutRequest): Observable<BaseCommandResponse> {
+    return this.post(logoutDto, 'logout');
   }
 
 

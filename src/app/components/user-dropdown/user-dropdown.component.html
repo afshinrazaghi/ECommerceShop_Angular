@@ -1,0 +1,12 @@
+<div *ngIf="user" class="user-dropdown-menu">
+    <div class="user-info py-2">
+        <!-- <img src="{{user.profilePicture}}" alt="{{user.firstName }}"> -->
+        <p>{{user.fullName}}</p>
+    </div>
+    <hr>
+    <ul>
+        <li class="py-1 pt-2"><a routerLink="/profile">Profile</a></li>
+        <li *ngIf="user.isAdmin == true" class="py-1 pt-2"><a routerLink="/adminPanel">AdminPanel</a></li>
+        <li class="py-1"><a href="javsscript:void(0);" class="cursor-pointer" (click)="logout()">Log Out</a></li>
+    </ul>
+</div>

@@ -14,6 +14,7 @@ import {
 } from '@angular/animations';
 import { TokenStoreService } from 'src/app/services/token-store.service';
 import { BrowserStorageService } from 'src/app/services/browser-storage.service';
+import { UserApi } from 'src/app/api/v1/user.api';
 
 @Component({
   selector: 'app-header',
@@ -65,7 +66,8 @@ export class HeaderComponent implements OnInit {
     private router: Router,
     private loadingService: LoadingService,
     private tokenStoreService: TokenStoreService,
-    private browserStorageService:BrowserStorageService
+    private browserStorageService:BrowserStorageService,
+    private userApi:UserApi
   ) {}
 
   ngOnInit(): void {
@@ -123,6 +125,10 @@ export class HeaderComponent implements OnInit {
     // if (this.userApi.isAuthUserLoggedIn()) {
     //   this.getShoppingCartItemsCount();
     // }
+  }
+
+  get userAuthenticated() {
+    return this.userApi.isAuthUserLoggedIn();
   }
 
   getOpenClosedMenu() {

@@ -38,21 +38,6 @@
                                 <li class="nav-item m:inline md:hidden lg:inline" [class.selected-menu-item]="selectedMenu=='about'">
                                     <a class="nav-link whitespace-nowrap" routerLink="/about">About us</a>
                                 </li>
-                                <!-- <li class="nav-item sm:inline md:hidden lg:inline" [class.selected-menu-item]="selectedMenu=='contact'">
-                                    <a class="nav-link whitespace-nowrap" routerLink="/contact">Contact</a>
-                                </li> -->
-
-                                <!-- <li *ngIf="!userAuthenticated" class="nav-item " [class.selected-menu-item]="selectedMenu=='login'">
-                                    <a class="nav-link whitespace-nowrap" routerLink="/login">Sign in</a>
-                                </li>
-
-                                <li *ngIf="userAuthenticated && shoppingCartItemsCount>0" class="relative nav-item mr-3 hover:cursor-pointer ">
-                                    <a class="nav-link" routerLink="/checkout/cart">
-                                        <i class="relative text-xl fa fa-shopping-bag " [class.text-gray-500]="selectedMenu!='checkout/cart'" [class.text-[#EF6D39]]="selectedMenu=='checkout/cart'">
-                                          <span class="absolute -top-3 -left-5 badge btn-danger text-base leading-3	 rounded-full w-[22px] h-[22px]">{{shoppingCartItemsCount}}</span>
-                                        </i>
-                                    </a>
-                                </li>
 
                                 <li *ngIf="userAuthenticated" class="nav-item hidden  md:inline">
                                     <div (click)="toggle()" class="text-lg rounded-full border-2 border-[#bbbbbb] text-center w-8 h-8 -mt-1 cursor-pointer">
@@ -62,6 +47,26 @@
                                         <app-user-dropdown [user]="currentUser"></app-user-dropdown>
                                     </div>
                                 </li>
+
+                                <li *ngIf="!userAuthenticated" class="nav-item " [class.selected-menu-item]="selectedMenu=='login'">
+                                    <a class="nav-link whitespace-nowrap" routerLink="/login">Sign in</a>
+                                </li>
+
+                                <!-- <li class="nav-item sm:inline md:hidden lg:inline" [class.selected-menu-item]="selectedMenu=='contact'">
+                                    <a class="nav-link whitespace-nowrap" routerLink="/contact">Contact</a>
+                                </li>
+
+
+
+                                <li *ngIf="userAuthenticated && shoppingCartItemsCount>0" class="relative nav-item mr-3 hover:cursor-pointer ">
+                                    <a class="nav-link" routerLink="/checkout/cart">
+                                        <i class="relative text-xl fa fa-shopping-bag " [class.text-gray-500]="selectedMenu!='checkout/cart'" [class.text-[#EF6D39]]="selectedMenu=='checkout/cart'">
+                                          <span class="absolute -top-3 -left-5 badge btn-danger text-base leading-3	 rounded-full w-[22px] h-[22px]">{{shoppingCartItemsCount}}</span>
+                                        </i>
+                                    </a>
+                                </li>
+
+
 
 
                                 <li *ngIf="userAuthenticated" class="nav-item  md:hidden" [class.selected-menu-item]="selectedMenu=='profile'">

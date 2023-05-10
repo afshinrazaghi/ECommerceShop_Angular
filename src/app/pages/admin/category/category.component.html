@@ -1,0 +1,26 @@
+<div class="container p-5 pt-[2rem] mx-auto ">
+    <div>
+        <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-12 relative my-2">
+                    <label class="block text-gray-700 font-bold mb-2 mandatory" for="name">Name</label>
+                    <input formControlName="name" autocomplete="off" name="name" class=" appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" type="text" placeholder="Name">
+                </div>
+                <div class="col-12  relative my-2">
+                    <label class="block text-gray-700 font-bold mb-2 mandatory" for="description">Description</label>
+                    <textarea rows="10" formControlName="description" autocomplete="off" name="description" class=" appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="description" type="text" placeholder="Description"></textarea>
+                </div>
+            </div>
+
+            <div class="text-center m-4">
+                <button type="submit" class="send_btn m-1 max-w-[130px] h-[50px] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+      Save </button>
+
+                <button type="button" (click)="close()" class="send_btn m-1 max-w-[130px] h-[50px] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+        Close </button>
+            </div>
+        </form>
+
+
+    </div>
+</div>
