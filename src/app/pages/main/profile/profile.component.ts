@@ -36,7 +36,7 @@ export class ProfileComponent implements OnInit {
       email: [{ value: '', disabled: true }],
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.minLength(6)]
     });
 
     this.getUserById();

@@ -15,6 +15,7 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { UserDropdownComponent } from 'src/app/components/user-dropdown/user-dropdown.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,8 @@ const routes: Routes = [
       { path: 'home', component: HomeComponent },
       { path: 'register', component: RegisterComponent },
       { path: 'login', component: LoginComponent },
+      { path: 'profile', component: ProfileComponent },
+      { path: 'aboutUs', component: AboutUsComponent }
     ]
   }
 ]
@@ -37,7 +40,8 @@ const routes: Routes = [
     MainComponent,
     LoginComponent,
     UserDropdownComponent,
-    ProfileComponent
+    ProfileComponent,
+    AboutUsComponent
   ],
   imports: [
     CommonModule,

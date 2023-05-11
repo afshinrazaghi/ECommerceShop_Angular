@@ -13,15 +13,15 @@ export class BannerComponent implements OnInit {
 
 
   images : any[] = [
-    {name:'assets/img/figure1.png', title:'Figure1'},
-    {name:'assets/img/figure2.png', title:'Figure2'},
-    {name:'assets/img/figure3.png', title:'Figure3'},
-    {name:'assets/img/figure4.png',title:'Figure4'},
-    {name:'assets/img/figure5.png',title:'Figure5'},
-    {name:'assets/img/figure6.png',title:'Figure6'},
-    {name:'assets/img/figure7.png',title:'Figure7'},
-    {name:'assets/img/figure8.png',title:'Figure8'},
-    {name:'assets/img/figure9.png',title:'Figure9'},
+    {name:'assets/img/Camera1.png', title:'Camera 1'},
+    {name:'assets/img/Camera2.png', title:'Camera 2'},
+    {name:'assets/img/Camera3.png', title:'Camera 3'},
+    {name:'assets/img/Camera4.png',title:'Camera 4'},
+    {name:'assets/img/Camera5.png',title:'Camera 5'},
+    {name:'assets/img/Camera6.png',title:'Camera 6'},
+    {name:'assets/img/Camera7.png',title:'Camera 7'},
+    {name:'assets/img/Camera8.png',title:'Camera 8'},
+    {name:'assets/img/Camera9.png',title:'Camera 9'},
 
   ];
 
