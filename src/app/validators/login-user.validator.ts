@@ -8,11 +8,11 @@ export class LoginUserValidator extends Validator<LoginUserRequest>{
     this.ruleFor('email')
       .notEmpty().withMessage('Email is mandatory')
       .notNull().withMessage('Email is mandatory')
-      .emailAddress().withMessage("email address is invalid");
+      .emailAddress().withMessage("Email is invalid");
 
       this.ruleFor('password')
       .notEmpty().withMessage('Password is mandatory')
       .notNull().withMessage('Password is mandatory')
-      .minLength(6).withMessage("password must be more than 6 character");
+      .minLength(6).withMessage("password must be at least 6 character");
   }
 }
