@@ -13,14 +13,15 @@ import { CategoryManagementComponent } from './category-management/category-mana
 import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UsersComponent } from './users/users.component';
+import { AuthGuard } from 'src/app/services/auth.guard';
 
 
 const routes: Routes = [
   {
     path: '', component: AdminComponent,
     children: [
-      { path: 'users', component: UsersComponent },
-      { path: 'categories', component: CategoryManagementComponent }
+      { path: 'users', component: UsersComponent, canActivate: [AuthGuard] },
+      { path: 'categories', component: CategoryManagementComponent, canActivate: [AuthGuard] }
     ]
   }
 ]
@@ -45,6 +46,9 @@ const routes: Routes = [
     MatDialogModule,
     ReactiveFormsModule,
     FormsModule
+  ],
+  providers: [
+    AuthGuard
   ]
 })
 export class AdminModule { }
